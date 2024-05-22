@@ -1,8 +1,75 @@
 #body {
-    background-color: var(--main-color);
-    color: var(--sub-color);
-    width: 100vw;
-    height: 100vh;
     display: flex;
     flex-flow: column;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--main-color);
+    color: var(--font-1);
+    overflow: hidden;
+}
+
+header {
+    flex-grow: 0;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    min-width: min-content;
+    min-height: 15%;
+}
+
+header > h1 {
+    color: var(--brand-title);
+    text-shadow: 0 0 25px var(--brand-title-glow);
+}
+
+#search-bar {
+    padding-left: 20px;
+    margin-left: 40px;
+    width: 550px;
+    height: 50px;
+    border: 3.5px dashed var(--search-border);
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: large;
+}
+
+header > button {
+    margin-left: 15px;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+    overflow: hidden;
+    border: 3.5px dashed var(--search-border);
+    border-radius: 20px;
+}
+
+#settings-button > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 25px;
+    height: 25px;
+}
+
+#settings-button > div > img {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 100%;
+    height: 100%;
+}
+
+#profile-button > div {
+    position: absolute;
+    top: 27%;
+    left: 50%;
+    width: 15px;
+}
+
+#profile-button > div > img {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 100%;
 }
