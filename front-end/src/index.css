@@ -1,0 +1,111 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  background-color: transparent;
+  color: var(--font-1);
+  box-sizing: border-box;
+}
+
+.dark-mode{
+  /* Main color */
+  --main-color: #2C2C2C;
+
+  /* Panel Colors */
+  --panel-color-1: #262626;
+  --panel-color-2: #2f2f2f;
+  --panel-color-3: #3B3B3B;
+  --profile-panel: #191919;
+  --search-panel: #00000000;
+
+  /* Border Colors */
+  --border-color-1: #343434;
+  --border-color-2: #363636;
+  --border-color-3: #5C5C5C;
+  --profile-border: #191919;
+  --search-border: #4F4F4F;
+
+  /* Title colors */
+  --brand-title: #E1E1E1;
+  --title-1: #E1E1E1;
+  --title-2: #818181;
+  --select-title: #7C7C7C;
+
+  /* Title glow colors */
+  --brand-title-glow: #e1e1e14e;
+  --title-glow-1: #e1e1e14e;
+  --title-glow-2: #4e4e4e4e;
+  --select-title-glow: #7C7C7C4e;
+
+  /* Font colors */
+  --font-1: #868686;
+
+  /* Accent colors */
+  --accent-1: #C84D4D;
+  --accent-2: #5F2D2D;
+  --accent-border-1: #C84D4D;
+  --accent-border-2: #9B3838;
+  --accent-font-1: #E1E1E1;
+  --accent-font-2: #E1E1E1;
+
+  transition: all 200ms;
+
+  color-scheme: dark;
+}
+
+.light-mode{
+  /* Main color */
+  --main-color: #FFFFFF;
+
+  /* Panel Colors */
+  --panel-color-1: #FFFFFF;
+  --panel-color-2: #E3E3E3;
+  --panel-color-3: #FFFFFF;
+  --profile-panel: #FFFFFF;
+  --search-panel: #FFFFFF00;
+
+  /* Border Colors */
+  --border-color-1: #E0E0E0;
+  --border-color-2: #CECECE;
+  --border-color-3: #B2B2B2;
+  --profile-border: #00000000;
+  --search-border: #B2B2B2;
+
+  /* Title colors */
+  --brand-title: #000000;
+  --title-1: #5B5B5B;
+  --title-2: #929292;
+  --select-title: #7C7C7C;
+
+  /* Title glow colors */
+  --brand-title-glow: #00000000;
+  --title-glow-1: #5B5B5B00;
+  --title-glow-2: #92929200;
+  --select-title-glow: #7C7C7C00;
+
+  /* Font colors */
+  --font-1: #727272;
+
+  /* Accent colors */
+  --accent-1: #FF6D6D;
+  --accent-2: #FFAAAA;
+  --accent-border-1: #FF6D6D;
+  --accent-border-2: #CD9494;
+  --accent-font-1: #FFFFFF;
+  --accent-font-2: #606060;
+
+  transition: all 200ms;
+
+  color-scheme: light;
+}
