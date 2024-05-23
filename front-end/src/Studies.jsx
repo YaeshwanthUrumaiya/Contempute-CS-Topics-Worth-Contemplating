@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import './Studies.css'
-import MainStudy from "./main-study/MainStudy";
+import MainStudy from "./MainStudy/MainStudy";
 
 function Studies({studyPage,setStudyPage}){
 

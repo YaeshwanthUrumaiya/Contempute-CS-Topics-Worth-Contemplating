@@ -16,6 +16,11 @@
   background-color: transparent;
   color: var(--font-1);
   box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+button {
+  cursor: pointer;
 }
 
 .dark-mode{
