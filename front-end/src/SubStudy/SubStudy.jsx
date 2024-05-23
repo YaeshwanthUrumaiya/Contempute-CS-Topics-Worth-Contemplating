@@ -7,7 +7,7 @@ import Lesson3 from "./Lesson3";
 export const theActiveLesson = createContext(null);
 export const finishedLesson = createContext(null);
 
-export default function MainStudy(){
+function SubStudy(){
     const [pageUpdater,setPageUpdater] = useState(0);
     const [overviewMode,setOverviewMode] = useState(true);
     const [activeLesson,setActiveLesson] = useState(0);
@@ -34,7 +34,9 @@ export default function MainStudy(){
             "component":<Lesson3 setOverviewMode={setOverviewMode} toggleFinished={toggleFinished}/>
         },
     ]);
-    const studyName = "MainStudy"
+    const studyName = "SubStudy"
+
+    console.log(`activeLesson is ${activeLesson}`)
 
     function getCurrentLessonData(){
         return(lessonPages[activeLesson]["finished"])
@@ -112,7 +114,7 @@ export default function MainStudy(){
     function StudyOverview() {
         return(
             <div id="overview-page">
-                <h1>Study 1</h1>
+                <h1>SubStudy</h1>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo harum nostrum veniam fugiat accusantium autem deleniti dicta excepturi voluptas minima, nam repellendus laboriosam deserunt libero asperiores, voluptatum ab delectus sit?</p>
                 <button onClick={()=>{setOverviewMode(false)}}>Learn now</button>
             </div>
@@ -171,3 +173,5 @@ export default function MainStudy(){
         }
     </>)
 }
+
+export default SubStudy

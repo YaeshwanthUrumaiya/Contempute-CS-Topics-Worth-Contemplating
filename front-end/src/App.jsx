@@ -3,7 +3,7 @@ import './App.css'
 import settingsIcon from './assets/Settings.png'
 import profileIcon from './assets/Profile.png'
 import Studies from './Studies';
-import Settings from './Settings';
+import Settings from './Settings/Settings';
 import { getData, storeData } from './script';
 
 function App() {
