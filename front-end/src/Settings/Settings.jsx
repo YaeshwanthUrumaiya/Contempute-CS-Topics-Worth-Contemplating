@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import "./Settings.css";
-import { getData, storeData } from "../script";
+import { getData, isDataExist, storeData } from "../script";
 import ListOfSettings from "./SettingsList";
 import SettingsDisplayer from "./SettingDisplayer";
 
@@ -8,8 +8,8 @@ export const currentSettingPage = createContext(0);
 
 export default function Settings(){
     const [studyList,setStudyList] = useState([
-        {"name":"MainStudy","saveFile":getData("MainStudy")},
-        {"name":"SubStudy","saveFile":getData("SubStudy")},
+        {"name":"General","saveFile":[]},
+        {"name":"DSA","saveFile":isDataExist("DSA")?getData("DSA"):[]},
     ])
     const [currentPage,setCurrentPage] = useState(0);
     const [pageUpdater,setPageUpdater] = useState(0);
@@ -25,7 +25,6 @@ export default function Settings(){
     }
 
     function saveProgress() {
-        console.log("data stored.")
         storeData(studyList[currentPage]["name"],studyList[currentPage]["saveFile"])
     }
     

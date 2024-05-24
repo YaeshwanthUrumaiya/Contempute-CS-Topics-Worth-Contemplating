@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react"
 import './Studies.css'
-import MainStudy from "./MainStudy/MainStudy";
-import SubStudy from "./SubStudy/SubStudy";
+import DSA from "./DSA/DSA"
 
 function Studies({studyPage,setStudyPage}){
 
     let studyPages = [
-        {"name":"DSA", "component":<MainStudy />},
-        {"name":"SUB", "component":<SubStudy />},
+        {"name":"DSA", "component":<DSA />},
     ]
 
     function StudyButtonList(){

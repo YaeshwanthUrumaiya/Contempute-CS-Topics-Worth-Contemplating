@@ -34,11 +34,11 @@
     flex-flow: column;
 }
 .settings-button {
-    margin-top: 5px;
-    padding: 10px 20px;
+    margin-top: 3px;
+    padding: 7px 20px;
     background-color: transparent;
     border: none;
-    border-radius: 10px;
+    border-radius: 7px;
     text-align: left;
 }
 .settings-button:hover {
@@ -50,6 +50,8 @@
 .the-settings{
     flex-grow: 1;
     padding: 55px 13%;
+    overflow: scroll;
+    scrollbar-width: none;
 }
 .saved-lessons {
     display: flex;
@@ -71,4 +73,34 @@
 .saved-lessons button:hover {
     background-color: var(--accent-1);
     color: var(--accent-font-1)
+}
+.profile {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 40px 40px;
+    background-color: var(--panel-color-2);
+    border-radius: 15px;
+}
+.profile > div:first-child {
+    min-width: 130px;
+    min-height: 130px;
+    background-color: var(--panel-color-3);
+    border-radius: 100px;
+    overflow: hidden;
+    position: relative;
+}
+.profile > div:first-child > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-width: 130px;
+    max-height: 130px;
+}
+.profile > div:last-child {
+    flex-grow: 1;
+    margin-left: 25px;
 }

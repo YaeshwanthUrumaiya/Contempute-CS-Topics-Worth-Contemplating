@@ -1,42 +1,24 @@
 import { useState, useEffect, createContext, act } from "react"
 import { getData, isDataExist, storeData } from "../script";
-import Lesson1 from "./Lesson1";
-import Lesson2 from "./Lesson2";
-import Lesson3 from "./Lesson3";
+import DataStructureIntro from "./DataStructureIntro";
 
 export const theActiveLesson = createContext(null);
 export const finishedLesson = createContext(null);
 
-function SubStudy(){
+export default function DSA(){
     const [pageUpdater,setPageUpdater] = useState(0);
     const [overviewMode,setOverviewMode] = useState(true);
     const [activeLesson,setActiveLesson] = useState(0);
     const [lessonPages,setLessonPages] = useState([
         {
-            "name":"Stack",
-            "subject":"Data Structure",
-            "description":"Let's learn about lesson 1.",
+            "name":"Data Structure: Intro",
+            "subject":"Introduction",
+            "description":"What is data structure? and why is it important?",
             "finished":false,
-            "component":<Lesson1 setOverviewMode={setOverviewMode} toggleFinished={toggleFinished}/>
-        },
-        {
-            "name":"Lesson 2",
-            "subject":"Data Structure",
-            "description":"Let's learn about lesson 2.",
-            "finished":false,
-            "component":<Lesson2 setOverviewMode={setOverviewMode} toggleFinished={toggleFinished}/>
-        },
-        {
-            "name":"Lesson 3",
-            "subject":"Data Structure",
-            "description":"Let's learn about lesson 2.",
-            "finished":false,
-            "component":<Lesson3 setOverviewMode={setOverviewMode} toggleFinished={toggleFinished}/>
+            "component":<DataStructureIntro setOverviewMode={setOverviewMode} toggleFinished={toggleFinished}/>
         },
     ]);
-    const studyName = "SubStudy"
-
-    console.log(`activeLesson is ${activeLesson}`)
+    const studyName = "DSA"
 
     function getCurrentLessonData(){
         return(lessonPages[activeLesson]["finished"])
@@ -60,9 +42,9 @@ function SubStudy(){
         for (let index in tempArray) {
             changeLessonPages(
                 index,
-                tempArray[index]["name"],
-                tempArray[index]["subject"],
-                tempArray[index]["description"],
+                lessonPages[index]["name"],
+                lessonPages[index]["subject"],
+                lessonPages[index]["description"],
                 tempArray[index]["finished"],
                 lessonPages[index]["component"]
             )
@@ -114,8 +96,8 @@ function SubStudy(){
     function StudyOverview() {
         return(
             <div id="overview-page">
-                <h1>SubStudy</h1>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo harum nostrum veniam fugiat accusantium autem deleniti dicta excepturi voluptas minima, nam repellendus laboriosam deserunt libero asperiores, voluptatum ab delectus sit?</p>
+                <h1>Data Structure & Algorithm</h1>
+                <p>Data structures are used to manage, store, and retrieve data in an efficient way. It is often used when there are large amounts of data needs to be stored efficiently. The instructions to process the data into something meaningful is what we call Algorithm. In fact, any set of well structured instructions is known as algorithms. In this subject, we'll look into algorithms based on data structures and a few other algorithms that are widely used.</p>
                 <button onClick={()=>{setOverviewMode(false)}}>Learn now</button>
             </div>
         )
@@ -173,5 +155,3 @@ function SubStudy(){
         }
     </>)
 }
-
-export default SubStudy
