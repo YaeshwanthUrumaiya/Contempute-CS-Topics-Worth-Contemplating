@@ -47,6 +47,7 @@
 }
 
 #study-overview {
+    position: relative;
     flex-grow: 1;
     display: flex;
     flex-flow: row;
@@ -58,110 +59,60 @@
     background-color: var(--panel-color-1);
     border: 4px solid var(--border-color-1);
     border-radius: 15px;
+    overflow: scroll;
+    scrollbar-width: none;
 }
 
 
 /* ### INDIVIDUAL MainStudy.jsx ### */
-#study-description {
+#overview-page {
     display: flex;
     flex-flow: column;
     align-items: start;
     justify-content: center;
     padding: 80px;
-    width: 50%;
+    min-width: 50%;
 }
-#study-description > button {
-    background-color: var(--accent-1);
-    color: var(--accent-font-1);
-    font-size: medium;
-    font-weight: bold;
+#overview-page > h1 {
+    color: var(--title-2);
+    text-shadow: 0 0 25px var(--title-glow-2);
+}
+#overview-page > button {
     margin-top: 20px;
     padding: 15px 30px;
+    font-weight: bold;
+    font-size: larger;
+    background-color: var(--accent-1);
     border: none;
     border-radius: 100px;
+    color: var(--accent-font-1);
+    transition: all 100ms;
 }
-#study-description > button:hover {
+#overview-page > button:hover {
     background-color: var(--accent-2);
-    color: var(--accent-font-2);
+    columns: var(--accent-font-2);
 }
-
-#subject-menu {
-    display: flex;
-    flex-flow: column;
-    padding: 80px;
-    width: 50%;
-    max-height: 100%;
+#lessons-menu {
+    padding: 70px 100px;
+    min-width: 50%;
     background-color: var(--panel-color-2);
     border: 4px solid var(--border-color-2);
     border-radius: 7px;
     overflow: scroll;
     scrollbar-width: none;
 }
-.subject-tab {
+
+.lesson-button-wrapper {
     display: flex;
     flex-flow: row;
-    min-height: 110px;
+    min-height: 130px;
 }
-.subject-tab > div:first-child {
+.lesson-button-wrapper > div:first-child {
     display: flex;
     flex-flow: column;
-    margin-right: 20px;
     align-items: center;
-}
-.subject-tab > div:first-child > hr {
-    width: 0;
-    height: 100%;
-    border: 2px solid var(--border-color-3);
-}
-.subject-tab > div:last-child > h2 {
-    margin-top: 6px;
-    color: var(--select-title);
-    text-shadow: var(--select-title-glow);
-}
-.subject-button {
     min-width: 50px;
-    min-height: 50px;
-    background-color: var(--panel-color-3);
-    border: 4px solid var(--border-color-3);
-    border-radius: 15px;
-}
-
-/* ### INDIVIDUAL Subject.jsx Files ### */
-#lesson-menu {
-    padding: 40px;
-    min-width: 400px;
-    background-color: var(--panel-color-2);
-    border: 4px solid var(--border-color-2);
-    border-radius: 7px;
-    overflow: scroll;
-    scrollbar-width: none;
-}
-.lesson-select {
-    display: flex;
-    flex-flow: row;
-    min-height: 100px;
-}
-.lesson-select > div:last-child {
-    margin-left: 20px;
-}
-.lesson-select > div:last-child > h2 {
-    margin-top: 5px;
-}
-.lesson-select > div:last-child > button {
-    padding: 5px 10px;
-    background-color: var(--panel-color-3);
-    border: none;
-    border-radius: 10px;
-}
-.lesson-button > div:last-child > button:hover {
-    background-color: var(--panel-color-2);
-    border: 2px solid var(--border-color-3);
-}
-.lesson-button-wrapper{
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    min-width: min-content;
+    min-height: 100%;
 }
 .lesson-button {
     min-width: 50px;
@@ -170,26 +121,77 @@
     border: 4px dashed var(--border-color-3);
     border-radius: 15px;
 }
-.lesson-button-wrapper > hr {
+.div-lesson-unfinished > hr {
     height: 100%;
+    border: none;
+    border-left: 4px dashed var(--border-color-3);
 }
-.hr-vert-line{
-    border: 4px dashed var(--border-color-3);
-    border-left: 0;
+.lesson-button-wrapper > div:last-child {
+    margin-left: 20px;
 }
-.hr-vert-line-finished {
-    border: 4px solid var(--border-color-3);
-    border-left: 0;
+.subject-title{
+    padding: 5px 10px;
+    font-size: x-small;
+    font-weight: bold;
+    background-color: var(--accent-1);
+    color: var(--accent-font-1);
 }
-#lesson-content {
-    flex-grow: 1;
-    padding: 50px 150px;
+.lesson-button-wrapper > div:last-child > h2 {
+    font-size: xx-larger;
+    color: var(--select-title);
+    text-shadow: 0 0 25px var(--select-title-glow);
 }
-.finished-lesson {
+
+.lesson-button-finished {
     background-color: var(--panel-color-3);
-    border-style: solid;
+    border: 4px solid var(--border-color-3);
 }
-.selected-lesson {
-    background-color: var(--accent-2);
-    border-color: var(--accent-border-2);
+.div-lesson-finished > hr {
+    height: 100%;
+    border: none;
+    border-left: 4px solid var(--border-color-3);
+}
+
+
+/* ### Lesson.jsx CSS ### */
+#lesson-content {
+    position: relative;
+    width: 100%;
+    padding: 20px 20%;
+}
+#lesson-content > * {
+    position: relative;
+    margin: 20px 0;
+}
+#side-button, .hidden-side-area{
+    display: flex;
+    flex-flow: row;
+    position: absolute;
+    padding-right: 4%;
+    min-width: max-content;
+    bottom: 9px;
+    right: 100%;
+}
+#side-button > button, .hidden-side-area > button{
+    align-self: center;
+    margin-left: 10px;
+    padding: 5px 20px;
+    background-color: var(--panel-color-2);
+    border: none;
+    border-radius: 7px;
+    font-size: small;
+}
+#side-button > button, #side-button a{
+    background-color: var(--panel-color-2);
+    color: var(--font-1);
+}
+#side-button a {
+    text-decoration: none;
+}
+.hidden-side-area {
+    visibility: hidden;
+    top: 9px;
+}
+#lesson-content > *:hover > .hidden-side-area {
+    visibility: visible;
 }
