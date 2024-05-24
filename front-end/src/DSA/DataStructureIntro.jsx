@@ -18,19 +18,20 @@ export default function DataStructureIntro({setOverviewMode,toggleFinished}){
             </p>
             <h2>Okay, But Why is It So Important?</h2>
             <p>
-                Using and picking the right Data Structures to store data can be very effective, since certain tasks will perform way better when handled using the right data structures. 
+                Using and picking the right data structures to store data can be very effective, since certain tasks will perform way better when handled using the right data structures. 
             </p>
             <p>
                 For example, you are given a task to find the average mark from the entire students' test paper of the university.
             </p>
+            <ul>
+                <li>If we use the calculator to add the marks one by one, the process is most likely to be prone to mistakes such as forgetting where the progress were, or even unfortunate misclicks.</li>
+                <li>However, by having a unique ID to each and every marksheet, we can keep track of the data that has been placed in, and then let excel calculate the data. The data is safely stored, and the previous mistakes are easier to avoid.</li>
+            </ul>
             <p>
-                If we are working with just the calculator, adding each mark one by one to it to calculate the result, the process is prone to mistakes, especially forgetting at what point the progress has been going on.
+                Just a simple structure implemented could give benefits to operations that once seem trivial. If 100 more mark sheets were to be calculated, using the calculator will be much more time consuming. Whereas you just need to add 100 more rows in the Excel sheet and the calculation should be done in an instant. The right Data Structures should be scaled up or down without major issues.
             </p>
             <p>
-                However, if implement a simple structure to the data, by having unique ID for every mark, we can keep track of the data that has been placed in, and then let excel calculate the data.
-            </p>
-            <p>
-                Moreover, you can save your energy and time (i.e resources) when using the right data structure for the right task.
+                In an extremely large scale project, choosing the right data structure could even save consumption resources.
             </p>
             <p>
                 <div id="side-button">
