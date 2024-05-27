@@ -1,9 +1,14 @@
 import { useEffect, useContext } from "react";
 import { finishedLesson, theActiveLesson } from "./DSA";
+import hljs from "highlight.js";
+import '../../src/syntax-highlighter.css'
 
 export default function DSAStack({setOverviewMode,toggleFinished}){
     const activeLesson = useContext(theActiveLesson);
     const finished = useContext(finishedLesson);
+    useEffect(()=>{
+        hljs.highlightAll()
+    },[])
     return(<>
         <div id="lesson-content">
             <h1>

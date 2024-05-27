@@ -196,7 +196,12 @@
     visibility: visible;
 }
 code {
-    padding: 50px 70px;
-    background-color: var(--panel-color-2);
+    padding: 3px 5px;
+    background-color: var(--profile-panel);
+    border-radius: 7px;
+}
+pre > code {
     border-radius: 15px;
+    overflow-y: scroll;
+    scrollbar-width: none;
 }

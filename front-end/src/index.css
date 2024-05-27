@@ -65,8 +65,8 @@ button {
   --accent-font-2: #E1E1E1;
 
   /* Code block colors */
-  --code-font: #313131;
-  --code-bg: #252525;
+  --code-font: #c9c9c9;
+  --code-bg: #1d1d1d;
   --code-border: #414141;
   --keyword: #ff7b72;
   --title-class: #d2a8ff;
@@ -131,12 +131,12 @@ button {
   --accent-font-2: #606060;
 
   /* Code block colors */
-  --code-font: #313131;
-  --code-bg: #252525;
+  --code-font: #3b3b3b;
+  --code-bg: #e0e0e0;
   --code-border: #414141;
   --keyword: #ff4d40;
   --title-class: #b067ff;
-  --attribute: #79c0ff;
+  --attribute: #de38ff;
   --string: #45f745;
   --symbol: #ffa657;
   --comment: #8b949e;
