@@ -1,7 +1,7 @@
 import { useEffect, useContext } from "react";
 import { finishedLesson, theActiveLesson } from "./MainStudy";
 
-function Lesson1({setOverviewMode,toggleFinished}){
+export default function Lesson1({setOverviewMode,toggleFinished}){
     const activeLesson = useContext(theActiveLesson);
     const finished = useContext(finishedLesson);
     return(<>
@@ -36,5 +36,3 @@ function Lesson1({setOverviewMode,toggleFinished}){
         </div>
     </>)
 }
-
-export default Lesson1

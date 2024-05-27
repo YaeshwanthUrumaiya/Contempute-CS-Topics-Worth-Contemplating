@@ -1,6 +1,8 @@
 import { useState, useEffect, createContext, act } from "react"
 import { getData, isDataExist, storeData } from "../script";
 import DataStructureIntro from "./DataStructureIntro";
+import DSAStack from "./DSA-Stack";
+import DSAStackImplementation from "./DSA-Stack-Implementation";
 
 export const theActiveLesson = createContext(null);
 export const finishedLesson = createContext(null);
@@ -16,6 +18,20 @@ export default function DSA(){
             "description":"What is data structure? and why is it important?",
             "finished":false,
             "component":<DataStructureIntro setOverviewMode={setOverviewMode} toggleFinished={toggleFinished}/>
+        },
+        {
+            "name":"Stack",
+            "subject":"Data Structure",
+            "description":"Last in, first out.",
+            "finished":false,
+            "component":<DSAStack setOverviewMode={setOverviewMode} toggleFinished={toggleFinished}/>
+        },
+        {
+            "name":"Implementing Stack",
+            "subject":"Data Structure",
+            "description":"Implementing Stack in Python.",
+            "finished":false,
+            "component":<DSAStackImplementation setOverviewMode={setOverviewMode} toggleFinished={toggleFinished}/>
         },
     ]);
     const studyName = "DSA"
@@ -63,7 +79,6 @@ export default function DSA(){
     }
 
     function toggleFinished(index){
-        console.log(`activeLesson in toggle is ${activeLesson}`);
         if (lessonPages[index]["finished"] == true) {
             changeLessonPages(
                 index,
@@ -87,8 +102,6 @@ export default function DSA(){
     }
 
     function changeToLesson(index){
-        console.log("changeToLesson:")
-        console.log(index)
         setActiveLesson(index);
         setOverviewMode(false);
     }
