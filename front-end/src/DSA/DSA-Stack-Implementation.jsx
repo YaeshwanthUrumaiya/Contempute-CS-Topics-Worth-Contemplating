@@ -247,7 +247,7 @@ class STACK():
                 }</code>
             </pre>
             <p>
-                The class below is the complete implementation of the Stack Data Structure in Python. We'll see the explain usecase of this class in the next lesson!
+                The class above is the complete implementation of the Stack Data Structure in Python. We'll see the explain usecase of this class in the next lesson!
             </p>
 
             <p>
