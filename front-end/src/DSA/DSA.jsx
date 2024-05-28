@@ -4,6 +4,8 @@ import DataStructureIntro from "./DataStructureIntro";
 import DSAStack from "./DSA-Stack";
 import DSAStackImplementation from "./DSA-Stack-Implementation";
 import DSAUsingStackClass from "./DSA-Using-Stack-Class";
+import DSAQueue from "./DSA-Queue";
+import DSAQueueImplementation from "./DSA-Queue-Implementation";
 import DSAFinish from "./DSA-Finish";
 
 export const theActiveLesson = createContext(null);
@@ -41,6 +43,20 @@ export default function DSA(){
             "description":"Implementing Stack in Python.",
             "finished":false,
             "component":<DSAUsingStackClass setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Queue",
+            "subject":"Data Structure",
+            "description":"First in, first out!",
+            "finished":false,
+            "component":<DSAQueue setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Implementing Queue",
+            "subject":"Data Structure",
+            "description":"Implementing Queue in Python",
+            "finished":false,
+            "component":<DSAQueueImplementation setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
         },
         {
             "name":"DSA Finish",

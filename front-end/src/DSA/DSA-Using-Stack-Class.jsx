@@ -246,9 +246,6 @@ stackError: Can't pop; Empty Stack
             </p>
             <p>
                 Remember to not worry too much! Writing code is a process. There will be errors, but each time you found a way to fix it, you're getting better. So, just do it!
-            </p>
-
-            <p>
                 <div id="side-button">
                     <button><a href="#lesson-content">Go up</a></button>
                     <button onClick={()=>{toggleFinished(activeLesson);toggleFinish()}}>{finish?"Unfinish":"Finish"}</button>

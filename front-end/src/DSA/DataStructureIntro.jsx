@@ -51,8 +51,6 @@ export default function DataStructureIntro({setOverviewMode,toggleFinished,chang
             </p>
             <p>
                 In an extremely large scale project, choosing the right data structure could even save consumption resources.
-            </p>
-            <p>
                 <div id="side-button">
                     <button><a href="#lesson-content">Go up</a></button>
                     <button onClick={()=>{toggleFinished(activeLesson);toggleFinish()}}>{finish?"Unfinish":"Finish"}</button>

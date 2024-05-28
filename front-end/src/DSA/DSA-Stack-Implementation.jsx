@@ -263,8 +263,6 @@ class STACK():
             </pre>
             <p>
                 The class above is the complete implementation of the Stack Data Structure in Python. We'll see the explain usecase of this class in the next lesson!
-            </p>
-            <p>
                 <div id="side-button">
                     <button><a href="#lesson-content">Go up</a></button>
                     <button onClick={()=>{toggleFinished(activeLesson);toggleFinish()}}>{finish?"Unfinish":"Finish"}</button>
@@ -273,7 +271,6 @@ class STACK():
                     <button onClick={()=>{window.scrollTo(0,0);changeToLesson(activeLesson+1)}}>Continue</button>
                 </div>
             </p>
-
             <br />
         </div>
     </>)
