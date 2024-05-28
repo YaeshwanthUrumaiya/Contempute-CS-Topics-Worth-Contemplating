@@ -3,6 +3,8 @@ import { getData, isDataExist, storeData } from "../script";
 import DataStructureIntro from "./DataStructureIntro";
 import DSAStack from "./DSA-Stack";
 import DSAStackImplementation from "./DSA-Stack-Implementation";
+import DSAUsingStackClass from "./DSA-Using-Stack-Class";
+import DSAFinish from "./DSA-Finish";
 
 export const theActiveLesson = createContext(null);
 export const finishedLesson = createContext(null);
@@ -32,6 +34,20 @@ export default function DSA(){
             "description":"Implementing Stack in Python.",
             "finished":false,
             "component":<DSAStackImplementation setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Using Stack Class",
+            "subject":"Data Structure",
+            "description":"Implementing Stack in Python.",
+            "finished":false,
+            "component":<DSAUsingStackClass setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"DSA Finish",
+            "subject":"Data Structure",
+            "description":"",
+            "finished":false,
+            "component":<DSAFinish setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
         },
     ]);
     const studyName = "DSA"
@@ -141,7 +157,7 @@ export default function DSA(){
                 </div>
                 <div>
                     <span className="subject-title">{thePages["subject"]}</span>
-                    <h2>{thePages["name"]}</h2>
+                    <h2 onClick={()=>{changeToLesson(theKey)}} style={{cursor:"pointer"}}>{thePages["name"]}</h2>
                     <p>{thePages["description"]}</p>
                 </div>
             </div>

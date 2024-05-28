@@ -16,7 +16,6 @@
   background-color: transparent;
   color: var(--font-1);
   box-sizing: border-box;
-  scroll-behavior: smooth;
 }
 
 button {
@@ -137,8 +136,8 @@ button {
   --keyword: #ff4d40;
   --title-class: #b067ff;
   --attribute: #de38ff;
-  --string: #45f745;
-  --symbol: #ffa657;
+  --string: #2eb72e;
+  --symbol: #ff7c2b;
   --comment: #8b949e;
   --quote: #7ee787;
   --subst: #c9d1d9;

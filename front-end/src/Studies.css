@@ -59,8 +59,9 @@
     background-color: var(--panel-color-1);
     border: 4px solid var(--border-color-1);
     border-radius: 15px;
-    overflow: scroll;
-    scrollbar-width: none;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-1) transparent;
 }
 
 
@@ -157,6 +158,7 @@
 #lesson-content {
     position: relative;
     width: 100%;
+    height: max-content;
     padding: 20px 20%;
 }
 #lesson-content > * {
