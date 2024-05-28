@@ -3,17 +3,31 @@ import { finishedLesson, theActiveLesson } from "./DSA";
 import hljs from "highlight.js";
 import '../../src/syntax-highlighter.css'
 
-export default function DSAStackImplementation({setOverviewMode,toggleFinished}){
+export default function DSAStackImplementation({setOverviewMode,toggleFinished,changeToLesson}){
     const activeLesson = useContext(theActiveLesson);
-    const finished = useContext(finishedLesson);
+    const [finish,setFinish] = useState(useContext(finishedLesson));
+
+    function toggleFinish(){
+        if (finish) {
+            setFinish(false);
+        } else {
+            setFinish(true);
+        }
+    }
+
+    const currentLesson = 2;
+
     useEffect(()=>{
-        hljs.highlightAll()
+        hljs.highlightAll();
     },[])
     return(<>
         <div id="lesson-content">
             <h1>
                 <div id="side-button">
-                    <button onClick={()=>{setOverviewMode(true)}}>Back</button>
+                    <button onClick={()=>{setOverviewMode(true)}}>Menu</button>
+                    <button onClick={()=>{changeToLesson(activeLesson-1)}}>Previous</button>
+                </div>
+                <div id="r-side-button">
                 </div>
                  Stack Implementation
             </h1>
@@ -253,7 +267,9 @@ class STACK():
             <p>
                 <div id="side-button">
                     <button><a href="#lesson-content">Go up</a></button>
-                    <button onClick={()=>{toggleFinished(activeLesson);setOverviewMode(true)}}>{finished?"Unfinish":"Finish"}</button>
+                    <button onClick={()=>{toggleFinished(activeLesson);toggleFinish()}}>{finish?"Unfinish":"Finish"}</button>
+                </div>
+                <div id="r-side-button">
                 </div>
             </p>
 

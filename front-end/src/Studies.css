@@ -163,7 +163,8 @@
     position: relative;
     margin: 20px 0;
 }
-#side-button, .hidden-side-area{
+#side-button, 
+.hidden-side-area{
     display: flex;
     flex-flow: row;
     position: absolute;
@@ -172,7 +173,8 @@
     bottom: 9px;
     right: 100%;
 }
-#side-button > button, .hidden-side-area > button{
+#side-button > button, 
+.hidden-side-area > button{
     align-self: center;
     margin-left: 10px;
     padding: 5px 20px;
@@ -181,7 +183,8 @@
     border-radius: 7px;
     font-size: small;
 }
-#side-button > button, #side-button a{
+#side-button > button, 
+#side-button a{
     background-color: var(--panel-color-2);
     color: var(--font-1);
 }
@@ -195,6 +198,46 @@
 #lesson-content > *:hover > .hidden-side-area {
     visibility: visible;
 }
+
+
+#r-side-button, 
+.r-hidden-side-area{
+    display: flex;
+    flex-flow: row;
+    position: absolute;
+    padding-left: 4%;
+    min-width: max-content;
+    bottom: 9px;
+    left: 100%;
+}
+#r-side-button > button, 
+.r-hidden-side-area > button{
+    align-self: center;
+    margin-right: 10px;
+    padding: 5px 20px;
+    background-color: var(--panel-color-2);
+    border: none;
+    border-radius: 7px;
+    font-size: small;
+}
+#r-side-button > button, 
+#r-side-button a{
+    background-color: var(--panel-color-2);
+    color: var(--font-1);
+}
+#r-side-button a {
+    text-decoration: none;
+}
+.r-hidden-side-area {
+    visibility: hidden;
+    top: 9px;
+}
+#lesson-content > *:hover > .r-hidden-side-area {
+    visibility: visible;
+}
+
+
+
 code {
     padding: 3px 5px;
     background-color: var(--profile-panel);

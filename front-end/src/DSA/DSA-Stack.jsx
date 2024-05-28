@@ -1,19 +1,33 @@
-import { useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { finishedLesson, theActiveLesson } from "./DSA";
 import hljs from "highlight.js";
 import '../../src/syntax-highlighter.css'
 
-export default function DSAStack({setOverviewMode,toggleFinished}){
+export default function DSAStack({setOverviewMode,toggleFinished,changeToLesson}){
     const activeLesson = useContext(theActiveLesson);
-    const finished = useContext(finishedLesson);
+    const [finish,setFinish] = useState(useContext(finishedLesson));
+
+    function toggleFinish(){
+        if (finish) {
+            setFinish(false);
+        } else {
+            setFinish(true);
+        }
+    }
+
     useEffect(()=>{
-        hljs.highlightAll()
+        hljs.highlightAll();
     },[])
+
     return(<>
         <div id="lesson-content">
             <h1>
                 <div id="side-button">
-                    <button onClick={()=>{setOverviewMode(true)}}>Back</button>
+                    <button onClick={()=>{setOverviewMode(true)}}>Menu</button>
+                    <button onClick={()=>{changeToLesson(activeLesson-1)}}>Previous</button>
+                </div>
+                <div id="r-side-button">
+                    <button onClick={()=>{window.scrollTo(0,0);changeToLesson(activeLesson+1)}}>Continue</button>
                 </div>
                  Stack
             </h1>
@@ -50,7 +64,10 @@ export default function DSAStack({setOverviewMode,toggleFinished}){
                 Other tasks such as recursive functions or InFix and PostFix uses features of stack as well, which will be explained later on advanced Data Structure.
                 <div id="side-button">
                     <button><a href="#lesson-content">Go up</a></button>
-                    <button onClick={()=>{toggleFinished(activeLesson);setOverviewMode(true)}}>{finished?"Unfinish":"Finish"}</button>
+                    <button onClick={()=>{toggleFinished(activeLesson);toggleFinish()}}>{finish?"Unfinish":"Finish"}</button>
+                </div>
+                <div id="r-side-button">
+                    <button onClick={()=>{window.scrollTo(0,0);changeToLesson(activeLesson+1)}}>Continue</button>
                 </div>
             </p>
             <br />

@@ -17,21 +17,21 @@ export default function DSA(){
             "subject":"Introduction",
             "description":"What is data structure? and why is it important?",
             "finished":false,
-            "component":<DataStructureIntro setOverviewMode={setOverviewMode} toggleFinished={toggleFinished}/>
+            "component":<DataStructureIntro setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
         },
         {
             "name":"Stack",
             "subject":"Data Structure",
             "description":"Last in, first out.",
             "finished":false,
-            "component":<DSAStack setOverviewMode={setOverviewMode} toggleFinished={toggleFinished}/>
+            "component":<DSAStack setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
         },
         {
             "name":"Implementing Stack",
             "subject":"Data Structure",
             "description":"Implementing Stack in Python.",
             "finished":false,
-            "component":<DSAStackImplementation setOverviewMode={setOverviewMode} toggleFinished={toggleFinished}/>
+            "component":<DSAStackImplementation setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
         },
     ]);
     const studyName = "DSA"
@@ -102,6 +102,7 @@ export default function DSA(){
     }
 
     function changeToLesson(index){
+        document.getElementById("study-overview").scrollTop = 0;
         setActiveLesson(index);
         setOverviewMode(false);
     }

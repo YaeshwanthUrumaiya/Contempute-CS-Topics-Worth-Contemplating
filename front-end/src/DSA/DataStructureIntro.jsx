@@ -1,19 +1,33 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import { finishedLesson, theActiveLesson } from "./DSA";
 import hljs from "highlight.js";
 import '../../src/syntax-highlighter.css'
 
-export default function DataStructureIntro({setOverviewMode,toggleFinished}){
+export default function DataStructureIntro({setOverviewMode,toggleFinished,changeToLesson}){
     const activeLesson = useContext(theActiveLesson);
-    const finished = useContext(finishedLesson);
+    const [finish,setFinish] = useState(useContext(finishedLesson));
+
+    function toggleFinish(){
+        if (finish) {
+            setFinish(false);
+        } else {
+            setFinish(true);
+        }
+    }
+
+    const currentLesson = 0;
+
     useEffect(()=>{
-        hljs.highlightAll()
+        hljs.highlightAll();
     },[])
     return(<>
         <div id="lesson-content">
             <h1>
                 <div id="side-button">
-                    <button onClick={()=>{setOverviewMode(true)}}>Back</button>
+                    <button onClick={()=>{setOverviewMode(true)}}>Menu</button>
+                </div>
+                <div id="r-side-button">
+                    <button onClick={()=>{changeToLesson(activeLesson+1)}}>Continue</button>
                 </div>
                 Introduction to Data Structure
             </h1>
@@ -41,7 +55,10 @@ export default function DataStructureIntro({setOverviewMode,toggleFinished}){
             <p>
                 <div id="side-button">
                     <button><a href="#lesson-content">Go up</a></button>
-                    <button onClick={()=>{toggleFinished(activeLesson);setOverviewMode(true)}}>{finished?"Unfinish":"Finish"}</button>
+                    <button onClick={()=>{toggleFinished(activeLesson);toggleFinish()}}>{finish?"Unfinish":"Finish"}</button>
+                </div>
+                <div id="r-side-button">
+                    <button onClick={()=>{changeToLesson(activeLesson+1)}}>Continue</button>
                 </div>
             </p>
             <br />
