@@ -109,14 +109,9 @@ def DeQ(self):
     if not self.CheckEmpty():
         if(self.front == self.rear):
             self.front , self.rear = -1,-1
+        else:
+            self.rear -= 1
         val = self.q.pop(0)
-
-        # Here, we should've added 1 to the front variable right? Because the front variable should track the front of the queue and we just removed an element so, the front should
-        # move forward right? That's the catch! Since Python automatically shortens the queue list by 1 when popping an element, there is no need to update the front variable as the entire size of our queue is reduced by 1. 
-        # when we should update the front variable is, when the array doesn't shorten but an None/Null value is replacing the front value. Aka when the array size is static. 
-        # Likewise, we got no need to use rear varaible as well as just using len(q) will produce the same results. But we are doing this so that when implementating this 
-        # in other langauges like C/C++, it'll be easier. But Knowing this, we can optimize the queue class even further! Try to figure that out!!!
-
         print("Dequeued Item and shifted the Queue forward")
         return val
     else:
@@ -126,17 +121,61 @@ def DeQ(self):
                 }</code>
             </pre>
             <p>
-                This function removes an element from the queue. Since it removes from the start, the way the removal work is a bit different.
+                This function removes an element from the queue. Since it removes from the start, the way the removal work is a bit different than stack.
             </p>
             <p>
                 If the queue is <b>not empty</b>:
             </p>
             <ol style={{paddingLeft:"20px"}}>
                 <li><code>if self.front == self.rear :</code> when we are removing the last element of the queue, we want to make sure we update the <code>front</code> and <code>rear</code> variable accordingly (change to -1). This conditional block checks it for us. </li>
+                <li><code>self.rear -= 1</code> is used to keep track of where the last entered element is.</li>
                 <li><code>val = self.q.pop(0)</code> we use the <code>val</code> to contain the first element that we pop from the <code>q</code> array. We will eventually return the <code>val</code>.</li>
             </ol>
             <p>
                 If the queue is empty, the function will raise an error instead.
+            </p>
+            <h3>The Role Of <code>self.front</code> and <code>self.rear</code></h3>
+            <p>
+                Array acts differently between python and programming languages like C. The role of <code>self.front</code> and <code>self.rear</code> isn't so prevalent in python because python automatically process the array when its element is popped. Popping element 0 in python's array will cause all of the elements in the array to automatically move to the front by one index. However, C array works differently.
+            </p>
+            <p>
+                When you first initialize an array in C, all of the element is <code>null</code>.
+            </p>
+            <pre>
+                <code className="language-console">[null, null, null]</code>
+            </pre>
+            <p>
+                The array above is essentially these:
+            </p>
+            <ul style={{listStyle:"none"}}>
+                <li><code>index 0</code> is null</li>
+                <li><code>index 1</code> is null</li>
+                <li><code>index 2</code> is null</li>
+            </ul>
+            <p>
+                Now let's add elements to the array.
+            </p>
+            <pre>
+                <code className="language-console">["a","b","c"]</code>
+            </pre>
+            <p>
+                Now the array becomes these:
+            </p>
+            <ul style={{listStyle:"none"}}>
+                <li><code>index 0</code> is "a"</li>
+                <li><code>index 1</code> is "b"</li>
+                <li><code>index 2</code> is "c"</li>
+            </ul>
+            <p>
+                If we remove the element in <code>index 0</code>, it returns to null.
+            </p>
+            <ul style={{listStyle:"none"}}>
+                <li><code>index 0</code> is null</li>
+                <li><code>index 1</code> is "b"</li>
+                <li><code>index 2</code> is "c"</li>
+            </ul>
+            <p>
+                Instead of "b" moving to index 0 (like how python do it), "b" stays at <code>index 1</code>. For this reason, we keep track of the <code>self.first</code> and <code>self.rear</code> variables, in order for the class to work properly.
             </p>
             <h2>5. Peek</h2>
             <pre>
