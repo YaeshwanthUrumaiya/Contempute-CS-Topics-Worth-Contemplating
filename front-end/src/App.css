@@ -60,7 +60,12 @@ header > button {
     height: 100%;
 }
 
-#profile-button > div {
+#profile-button {
+    position: relative;
+    overflow: visible;
+}
+
+#profile-button > div:first-child {
     position: absolute;
     top: 27%;
     left: 50%;
@@ -72,4 +77,35 @@ header > button {
     top: -50%;
     left: -50%;
     width: 100%;
+}
+
+.profile-panel {
+    position: absolute;
+    z-index: 10;
+    top: 150%;
+    right: 0;
+}
+.profile-panel > .profile-display {
+    position: relative;
+    z-index: 11;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    height: 100%;
+    width: 140%;
+    padding: 20px;
+    background-color: var(--profile-panel);
+    border-radius: 15px;
+    box-shadow: 0 10px 35px #0000002b;
+}
+.profile-panel > .profile-display > h2 {
+    margin: 20px 0 8px;
+}
+.profile-panel > .cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
 }
