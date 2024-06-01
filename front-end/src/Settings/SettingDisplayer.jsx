@@ -3,7 +3,10 @@ import { currentSettingPage } from "./Settings";
 import { isDarkmode, theDarkMode } from "../App";
 import yaes from "../assets/yaes.jpg"
 import fren from "../assets/dawg.jpeg"
-import { getData } from "../script";
+import { getData, storeData } from "../script";
+import deer from "../assets/deer.png"
+import lion from "../assets/lion.png"
+import bear from "../assets/bear.png"
 
 export default function SettingsDisplayer({studyList,toggleFinished}) {
     const darkMode = useContext(theDarkMode);
@@ -45,9 +48,39 @@ export default function SettingsDisplayer({studyList,toggleFinished}) {
     }
 
     function GeneralSettings() {
+        const [selectedProfile,setSelectedProfile] = useState(getData("profile"));
+        const [profileName,setProfileName] = useState(getData("profile-name"));
+
+        function changeProfile(index){
+            setSelectedProfile(index)
+            storeData("profile",index)
+        }
+        
+        function changeProfileName(name){
+            setProfileName(name);
+            storeData("profile-name", name)
+        }
+
         return(<>
             <h1>General Settings</h1>
             <br />
+            <div className="profile-settings">
+                <div className="profiles">
+                    <div className={`profile-wrapper ${selectedProfile == 0?"profile-selected":""}`} onClick={()=>{changeProfile(0)}}>
+                        <img src={deer} alt="" />
+                    </div>
+                    <div className={`profile-wrapper ${selectedProfile == 1?"profile-selected":""}`} onClick={()=>{changeProfile(1)}}>
+                        <img src={lion} alt="" />
+                    </div>
+                    <div className={`profile-wrapper ${selectedProfile == 2?"profile-selected":""}`} onClick={()=>{changeProfile(2)}}>
+                        <img src={bear} alt="" />
+                    </div>
+                </div>
+                <div className="profile-name">
+                    <h3>Name</h3>
+                    <input type="text" placeholder="Full Name" onChange={event=>{changeProfileName(event.target.value)}} defaultValue={profileName} />
+                </div>
+            </div>
             <div className="saved-lessons">
                 <div>
                     <h3>Darkmode</h3>

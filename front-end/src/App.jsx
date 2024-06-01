@@ -5,6 +5,9 @@ import profileIcon from './assets/Profile.png'
 import Studies from './Studies';
 import Settings from './Settings/Settings';
 import { getData, storeData } from './script';
+import deer from './assets/deer.png';
+import lion from './assets/lion.png';
+import bear from './assets/bear.png';
 
 export const theDarkMode = createContext(null);
 export const isDarkmode = createContext(null);
@@ -39,13 +42,46 @@ function App() {
     }
   }
 
+  function ProfilePanel(){
+    return(
+      <div className='profile-panel'>
+        <div className='profile-display'>
+          <div className='profile-wrapper' style={{border:"4px solid var(--panel-color-3)", boxShadow:"0 10px 35px #0000002b"}}>
+          {
+            getData("profile") == 0 ? <img src={deer} alt='deer'></img> :
+            getData("profile") == 1 ? <img src={lion} alt='lion'></img> :
+            getData("profile") == 2 ? <img src={bear} alt='bear'></img> :
+            <img src='' alt=''></img>
+          }
+          </div>
+          <h2>{getData("profile-name")?getData("profile-name"):"guest"}</h2>
+          <div onClick={()=>{switchDarkMode()}} style={{cursor:"pointer"}}>
+            {darkMode?"Dark mode":"Light mode"}
+          </div>
+        </div>
+        <div className='cover'></div>
+      </div>
+    )
+  }
+
   function Header(){
+    const [profileVisible,setProfileVisible] = useState(false)
+
+    function toggleProfileVisibility(){
+      if (profileVisible) {
+        setProfileVisible(false)
+      } else {
+        setProfileVisible(true)
+      }
+    }
+
     return(
       <header>
         <h1>Title</h1>
         <input id='search-bar' type="text" placeholder='Search'/>
         <button id='settings-button' onClick={togglePage}> <div><img src={settingsIcon} alt="settings" /></div>  </button>
-        <button id='profile-button'> <div><img src={profileIcon} alt="profile" /></div>  </button>
+        <button id='profile-button' onClick={()=>{toggleProfileVisibility()}}> <div><img src={profileIcon} alt="profile" /></div> 
+        {profileVisible?<ProfilePanel />:<></>}  </button>
       </header>
     )
   }

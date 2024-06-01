@@ -165,6 +165,10 @@
     position: relative;
     margin: 20px 0;
 }
+#lesson-content p {
+    position: relative;
+    margin: 20px 0;
+}
 #side-button, 
 .hidden-side-area{
     display: flex;
@@ -249,4 +253,39 @@ pre > code {
     border-radius: 15px;
     overflow-y: scroll;
     scrollbar-width: none;
+}
+
+.two-panel {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}
+.two-panel > :first-child,
+.two-panel > :last-child{
+    flex-grow: 1;
+    width: 50%;
+}
+.two-panel > :first-child {
+    margin-right: 20px;
+}
+.panel-bg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    border-radius: 15px;
+}
+.panel-bg img {
+    width: 100%;
+}
+
+
+.panel-color-1{
+    background-color: var(--panel-color-1);
+}
+.panel-color-2{
+    background-color: var(--panel-color-2);
+}
+.panel-color-3{
+    background-color: var(--panel-color-3);
 }

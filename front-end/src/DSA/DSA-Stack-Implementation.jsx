@@ -2,6 +2,9 @@ import { useEffect, useContext, useState } from "react";
 import { finishedLesson, theActiveLesson } from "./DSA";
 import hljs from "highlight.js";
 import '../../src/syntax-highlighter.css'
+import stackTilt from "./images/stack_tilt.png"
+import stackPush from "./images/stack_push.png"
+import stackPop from "./images/stack_pop.png"
 
 export default function DSAStackImplementation({setOverviewMode,toggleFinished,changeToLesson}){
     const activeLesson = useContext(theActiveLesson);
@@ -60,10 +63,17 @@ class STACK():
                 <li><code>self.limit</code> is the limit of elements we can have in our stack. </li>
                 <li><code>self.top</code> is a counter which keeps track of where the most top element is. </li>
             </ul>
-            <h3>How Stack Works Using Array</h3>
-            <p>
-                On previous lessons, we learned that stack is similar to a stack of books. Adding to the stack means placing the book on top of another book. However, since <code>self.stack</code> is an array, the direction of the stack is tilted. Instead of a stack that is top to bottom, it's right to left instead. When we add an element to the <code>self.stack</code> array, the newest element would be on the most right.
-            </p>
+            <div className="two-panel">
+                <div>
+                    <h3>How Stack Works Using Array</h3>
+                    <p>
+                        On previous lessons, we learned that stack is similar to a stack of books. Adding to the stack means placing the book on top of another book. However, since <code>self.stack</code> is an array, the direction of the stack is tilted. Instead of a stack that is top to bottom, it's right to left instead. When we add an element to the <code>self.stack</code> array, the newest element would be on the most right.
+                    </p>
+                </div>
+                <div className="panel-bg panel-color-2">
+                    <img src={stackTilt} alt="" />
+                </div>
+            </div>
             <h3>Why Use <code>self.top</code> Instead Of <code>len(self.stack)</code>?</h3>
             <p>
                 There are mainly 2 reasons:
@@ -126,12 +136,19 @@ def Push(self,item):
 `
                 }</code>
             </pre>
-            <p>
-                This function attempts to add (push) an item to the stack. <b>However</b>, we don't want to push an item if the stack is full. if the stack is full, we want to raise an <b>error</b> instead.
-            </p>
-            <p>
-                <code>def Push(self,item):</code> declares a function, which takes <code>item</code> as its parameter. This <code>item</code> is the element we want to add to the stack.
-            </p>
+            <div className="two-panel">
+                <div>
+                    <p>
+                        This function attempts to add (push) an item to the stack. <b>However</b>, we don't want to push an item if the stack is full. if the stack is full, we want to raise an <b>error</b> instead.
+                    </p>
+                    <p>
+                        <code>def Push(self,item):</code> declares a function, which takes <code>item</code> as its parameter. This <code>item</code> is the element we want to add to the stack.
+                    </p>
+                </div>
+                <div className="panel-bg panel-color-2">
+                    <img src={stackPush} alt="" />
+                </div>
+            </div>
             <p>If the stack is <b>not full</b>:</p>
             <ol style={{paddingLeft:"20px"}}>
                 <li><code>if not self.CheckFull()</code> calls the <code>self.CheckFull()</code> function to check if the stack is full or not. When the function returns true, it will be reversed by the <code>not</code> keyword to false, and the other way around. Making sure there is space to push the element into our stack.</li>
@@ -159,23 +176,30 @@ def Pop(self):
 `
                 }</code>
             </pre>
-            <p>
-                The <code>Pop()</code> function removes an element from the stack. <b>However</b>, if the stack is empty, we shouldn't let the function remove any more elements from it, because it should not have any elements left.
-            </p>
-            <p>
-                If the stack is empty, the function will raise an error.
-            </p>
-            <p>
-                Otherwise, the function will:
-            </p>
-            <ol style={{paddingLeft:"20px"}}>
-                <li><code>val</code> is a temporary variable that we will use to contain the element that we are going to pop out.</li>
-                <li><code>self.stack.pop()</code> is going to return the rightmost "book" (element) from the stack using the <code>pop()</code> built in function, and then deletes the element from the stack.</li>
-                <li><code>val = self.stack.pop()</code> means we are setting the value returned by <code>self.stack.pop()</code> to the <code>val</code> variable. </li>
-                <li><code>self.top -= 1</code> keeps track of the <code>top</code> using the <code>-=1</code> operator, which subtracts <code>top</code> itself by 1. </li>
-                <li><code>print()</code> is used for debugging, confirming that the item has been popped. </li>
-                <li><code>return val</code> the <code>return</code> keyword will return <code>val</code>.</li>
-            </ol>
+            <div className="two-panel">
+                <div>
+                    <p>
+                        The <code>Pop()</code> function removes an element from the stack. <b>However</b>, if the stack is empty, we shouldn't let the function remove any more elements from it, because it should not have any elements left.
+                    </p>
+                    <p>
+                        If the stack is empty, the function will raise an error.
+                    </p>
+                    <p>
+                        Otherwise, the function will:
+                    </p>
+                    <ol style={{paddingLeft:"20px"}}>
+                        <li><code>val</code> is a temporary variable that we will use to contain the element that we are going to pop out.</li>
+                        <li><code>self.stack.pop()</code> is going to return the rightmost "book" (element) from the stack using the <code>pop()</code> built in function, and then deletes the element from the stack.</li>
+                        <li><code>val = self.stack.pop()</code> means we are setting the value returned by <code>self.stack.pop()</code> to the <code>val</code> variable. </li>
+                        <li><code>self.top -= 1</code> keeps track of the <code>top</code> using the <code>-=1</code> operator, which subtracts <code>top</code> itself by 1. </li>
+                        <li><code>print()</code> is used for debugging, confirming that the item has been popped. </li>
+                        <li><code>return val</code> the <code>return</code> keyword will return <code>val</code>.</li>
+                    </ol>
+                </div>
+                <div className="panel-bg panel-color-2">
+                    <img src={stackPop} alt="" />
+                </div>
+            </div>
             <h2>6. Peeking The Stack</h2>
             <p>
                 Inside the <code>STACK</code> class, add the function below:
