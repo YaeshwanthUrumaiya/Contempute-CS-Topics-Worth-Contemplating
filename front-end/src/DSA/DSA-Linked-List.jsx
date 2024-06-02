@@ -57,8 +57,6 @@ export default function DSALinkedList({setOverviewMode,toggleFinished,changeToLe
             </p>
             <p>
                 If you notice how linked list behave, there are similarities on how python's array work and linked list. Deleting one node from the list will cause the index to automatically readjust, similar to how python handles array.
-            </p>
-            <p>
                 <div id="side-button">
                     <button><a href="#lesson-content">Go up</a></button>
                     <button onClick={()=>{toggleFinished(activeLesson);toggleFinish()}}>{finish?"Unfinish":"Finish"}</button>

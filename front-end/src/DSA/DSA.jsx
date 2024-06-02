@@ -8,6 +8,7 @@ import DSAQueue from "./DSA-Queue";
 import DSAQueueImplementation from "./DSA-Queue-Implementation";
 import DSAUsingQueueClass from "./DSA-Using-Queue-Class";
 import DSALinkedList from "./DSA-Linked-List";
+import DSALinkedListImplementation from "./DSA-Linked-List-Implementation";
 import DSAFinish from "./DSA-Finish";
 
 export const theActiveLesson = createContext(null);
@@ -73,6 +74,13 @@ export default function DSA(){
             "description":"You found a treasure map,",
             "finished":false,
             "component":<DSALinkedList setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Linked List Implementation",
+            "subject":"Data Structure",
+            "description":"Implementing Linked List in Python",
+            "finished":false,
+            "component":<DSALinkedListImplementation setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
         },
         {
             "name":"DSA Finish",
