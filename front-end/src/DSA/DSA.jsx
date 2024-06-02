@@ -7,6 +7,7 @@ import DSAUsingStackClass from "./DSA-Using-Stack-Class";
 import DSAQueue from "./DSA-Queue";
 import DSAQueueImplementation from "./DSA-Queue-Implementation";
 import DSAUsingQueueClass from "./DSA-Using-Queue-Class";
+import DSALinkedList from "./DSA-Linked-List";
 import DSAFinish from "./DSA-Finish";
 
 export const theActiveLesson = createContext(null);
@@ -65,6 +66,13 @@ export default function DSA(){
             "description":"Let's try using the queue class!",
             "finished":false,
             "component":<DSAUsingQueueClass setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Linked List",
+            "subject":"Data Structure",
+            "description":"You found a treasure map,",
+            "finished":false,
+            "component":<DSALinkedList setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
         },
         {
             "name":"DSA Finish",
