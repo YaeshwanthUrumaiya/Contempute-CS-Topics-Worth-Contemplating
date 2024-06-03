@@ -81,7 +81,169 @@ class LinkedList:
             <p>
                 So you see, <code>self.head</code> is <b>indeed</b> important. The functions that will be inside the <code>LinkedList</code> class depends on <code>self.head</code> in order to access or modify the linked list.
             </p>
-            <h2>3. <code>insert()</code> Function</h2>
+            <h2>3. <code>insert(self, item, index)</code> Function</h2>
+            <p>
+                The <code>insert()</code> function is meant to allow the user to add a ndoe to the linked list, based on the index that are given to the function.
+            </p>
+            <p>
+                There are several scenarios on where the index is going to be. <code>insert()</code> function deals with it.
+            </p>
+            <p>What happens when user put the index at the start?</p>
+            <ul style={{paddingLeft:"20px",}}>
+                <li>If list is empty, we put the item on the head.</li>
+                <li>If list has 1 or more item, we put the item on the head, and linked the item to the previous item. Let's say we have item A as the current head, and item B is inserted at the start. This means item B will now be on the head, and it's next map is set to item A.</li>
+            </ul>
+            <p>What happens when user does not put the item in the start? There are 2 possibilities:</p>
+            <ul style={{paddingLeft:"20px",}}>
+                <li>If the index is higher than the current length, we will put them at the end of the list.</li>
+                <li>If the index is inside the current length, we put them inside the list.</li>
+            </ul>
+            <p>
+                We will explore this deeper in code, since we will go through the <code>insert()</code> function into several section of <code>if else</code> statement.
+            </p>
+            <pre>
+                <code className="language-python">{
+`
+def insert(self, item, index=None):
+        if index is None: 
+            if self.head is None: 
+                self.head = Node(item) 
+            else: 
+                current = self.head 
+                while current.nextmap: 
+                    current = current.nextmap
+                current.nextmap = Node(item)  
+        else: 
+            if index == 0:
+                new_node = Node(item) 
+                new_node.nextmap = self.head 
+                self.head = new_node
+            else:
+                current = self.head
+                for i in range(index-1): 
+                    if current is None: 
+                        raise IndexError("Index out of range")
+                    current = current.nextmap 
+                new_node = Node(item) 
+                new_node.nextmap = current.nextmap
+                current.nextmap = new_node
+
+`
+                }</code>
+            </pre>
+            <h3>a. First Half of <code>insert()</code></h3>
+            <div className="two-panel">
+                <div>
+                    <pre>
+                        <code className="language-python">{
+`
+if index is None: 
+    if self.head is None: 
+        self.head = Node(item) 
+    else: 
+        current = self.head 
+        while current.nextmap: 
+            current = current.nextmap
+        current.nextmap = Node(item)
+
+
+`
+                        }</code>
+                    </pre>
+                </div>
+                <div>
+                    <p>
+                        The first half of the if else statement talks about what happens if the user does not include <code>index</code> as a parameter, which means it will be <code>None</code>.
+                    </p>
+                    <p>
+                        If the linked list have no head, we set item to the end of the list, <b>which is the head</b>.
+                    </p>
+                    <p>
+                        If the list is not empty, we loop to the end of the list and add the item to the list.
+                    </p>
+                </div>
+            </div>
+            <p>
+                <code>current</code> variable is used to contain the last node of the list. Eventually, we will add the new item by putting it on the <code>nextmap</code> of the last element.
+            </p>
+            <h3>b. Second Half of <code>index</code></h3>
+            <p>
+                The second half of the code is when the user gives the <b>index</b> to <code>insert()</code>.
+            </p>
+            <pre>
+                <code className="language-python">{
+`
+else: 
+    if index == 0:
+        new_node = Node(item) 
+        new_node.nextmap = self.head 
+        self.head = new_node
+    else:
+        current = self.head
+        for i in range(index-1): 
+            if current is None: 
+                raise IndexError("Index out of range")
+            current = current.nextmap 
+        new_node = Node(item) 
+        new_node.nextmap = current.nextmap
+        current.nextmap = new_node
+
+`
+                }</code>
+            </pre>
+            <div className="two-panel panel-bg panel-color-2">
+                <div>
+                    <pre>
+                        <code className="language-python">{
+`
+if index == 0:
+    new_node = Node(item) 
+    new_node.nextmap = self.head 
+    self.head = new_node
+
+`
+                        }</code>
+                    </pre>
+                </div>
+                <div>
+                    <p>
+                        If the <code>index</code> is 0, the node will replace the head.
+                    </p>
+                    <p>
+                        There are 2 important thing to pay attention here, that is the <b>new node</b> and the <b>previous head node</b>. Before putting the new node as the head, the previous head node has to be set as the next map of the new node.
+                    </p>
+                </div>
+            </div>
+            <pre>
+                <code className="language-python">{
+`
+else:
+    current = self.head
+    for i in range(index-1): 
+        if current is None: 
+            raise IndexError("Index out of range")
+        current = current.nextmap 
+    new_node = Node(item) 
+    new_node.nextmap = current.nextmap
+    current.nextmap = new_node
+
+`
+                }</code>
+            </pre>
+            <p>
+                In order to reach the <code>index</code> node the user wants, we use <code>current</code> and for loop. The for loop will keep looping until it reaches the <code>index</code>. By the time the for loop ends, <code>current</code> should be the desired node of the list. If the index turns out to be out of range (<code>None</code>), it will raise an error instead.
+            </p>
+            <p>
+                The idea here is to create a space between two node, and then insert our new node between it. We are going to link the <b>previous node</b> to the <b>new node</b>, and link the <b>new node</b> to the <b>subsequent node</b>.
+            </p>
+            <ul style={{paddingLeft:"20px"}}>
+                <li> The previous node is <code>current</code>.</li>
+                <li> The new node is <code>Node.new(item)</code>. </li>
+                <li> The subsequent node is <code>current.nextmap</code>.</li>
+            </ul>
+            <p>
+                Because we are going to override <code>current.nextmap</code> with the new node, we have to set next map of the new node to <code>current.nextmap</code> (subsequent), and then we can link previous node to the new node.
+            </p>
             <p>
                 <div id="side-button">
                     <button><a href="#lesson-content">Go up</a></button>
