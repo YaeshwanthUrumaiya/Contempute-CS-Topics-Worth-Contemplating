@@ -244,6 +244,160 @@ else:
             <p>
                 Because we are going to override <code>current.nextmap</code> with the new node, we have to set next map of the new node to <code>current.nextmap</code> (subsequent), and then we can link previous node to the new node.
             </p>
+            <h2>4. <code>remove(self, index)</code></h2>
+            <p>
+                The function removes an item from the list based on the index that the user give. If index is not given, it will remove the item on the head instead. Does it feels similar to another DS? (Yes, it's <b>queues</b>)
+            </p>
+            <p>
+                There are several scenario when the user is removing an item from the list:
+            </p>
+            <ul style={{paddingLeft:"20px"}}>
+                <li><b>The list is empty</b>. This means we should return or raise an error telling that list is empty.</li>
+                <li><b>The index given exceeds the current list's length</b>. This means we should raise an error telling index exceeds length.</li>
+                <li><b>The index is 0</b>. This means we shift the 2nd element of the list to the head.</li>
+                <li><b>The index is within range and not 0</b>. We do something similar with insert, finding the index position, getting the previous item and the subsequent item on the list. Instead of inserting, we remove it. This means we set the <b>previous item's</b> next map <b>to be subsequent item</b>, and then return the index item.</li>
+            </ul>
+            <pre>
+                <code className="language-python">{
+`
+def remove(self, index = 0):
+        
+    if self.head == None:
+        return
+
+    temp_head = self.head
+    
+    if index == 0: #If the index is 0, need to remove the first element
+        self.head = temp_head.nextmap #Take the header and assign it to the 2nd value. 
+        temp_head = None #Cleaning up the deleted node. 
+        return
+
+    for i in range(index - 1): #And if any value is given, we're going to loop to that index. 
+        if temp_head is None: #And if it turns None, means the given index exceeds the range of the list, We are breaking it to raise the error below. 
+            break
+        temp_head = temp_head.nextmap
+        
+
+    if temp_head is None or temp_head.nextmap is None: #And we're raising the error here. This will come in clutch if the given index exceeds the our list's size. 
+        raise IndexError("Index out of range") #We're checking both temp_head and temp_head.nextmap. Why's that? (If the index is far more than list's size, the temp_head will be None. But if we're trying to remove the item at the index of (list's size)+1, the temp_head will have the last item but the nextmap of the temp_head will be None. So that's why!)
+    
+    #And now, we just need to swap the values.
+    next_to_temp = temp_head.nextmap.nextmap
+    temp_head.nextmap = next_to_temp
+    next_node = None  #Clean up the removed node
+
+`
+                }</code>
+            </pre>
+            <div className="two-panel">
+                <div>
+                    <pre>
+                        <code className="language-python">{
+`
+if self.head == None:
+        return
+
+`
+                        }</code>
+                    </pre>
+                </div>
+                <div>
+                    <p>
+                        If the list is empty, (<code>self.head == None</code>) stops the function with <code>return</code>.
+                    </p>
+                </div>
+            </div>
+            <div className="two-panel">
+                <div>
+                    <pre>
+                        <code className="language-python">{
+`
+temp_head = self.head
+
+`
+                        }</code>
+                    </pre>
+                </div>
+                <div>
+                    <p>
+                        <code>temp_head</code> is a container to safely contain & access <code>self.head</code>, in case we are modifying <code>self.head</code>.
+                    </p>
+                </div>
+            </div>
+            <div className="two-panel">
+                <div>
+                    <pre>
+                        <code className="language-python">{
+`
+if index == 0:
+    self.head = temp_head.nextmap
+    return temp_head.item
+
+`
+                        }</code>
+                    </pre>
+                </div>
+                <div>
+                    <p>
+                        If the index is 0, we will remove <code>self.head</code> by setting the second element of the list to be the first (using <code>temp_head</code>), and then we return the item on index 0 (the head).
+                    </p>
+                </div>
+            </div>
+            <div className="two-panel">
+                <div>
+                    <pre>
+                        <code className="language-python">{
+`
+for i in range(index - 1):
+    if temp_head is None:
+        break
+    temp_head = temp_head.nextmap
+
+`
+                        }</code>
+                    </pre>
+                </div>
+                <div>
+                    <p>
+                        Here, we are using <code>temp_head</code> as a container for the <code>index</code> item. This snippet of code is used to check if index is in range or not. If it is out of range, <code>temp_head</code> will be <code>None</code>, which we will respond with error by using the code below:
+                    </p>
+                </div>
+            </div>
+            <pre>
+                <code className="language-python">{
+`
+if temp_head is None or temp_head.nextmap is None:
+        raise IndexError("Index out of range") #We're checking both temp_head and temp_head.nextmap. Why's that? (If the index is far more than list's size, the temp_head will be None. But if we're trying to remove the item at the index of (list's size)+1, the temp_head will have the last item but the nextmap of the temp_head will be None. So that's why!)
+
+`
+                }</code>
+            </pre>
+            <p>
+                Previously, we already checked if the index is in range or not. By using <code>if else</code> condition, we check if <code>temp_head</code> or <code>temp_head.nextmap</code> is <code>None</code> or not. If they are, the code will raise an error.
+            </p>
+            <h3>Why <code>temp_head.nextmap</code> is checked?</h3>
+            <p>
+                If the index is far more than list's size, the <code>temp_head</code> will be None. But if we're trying to remove the item at the index of (list's size)+1, the temp_head will have the last item but the nextmap of the temp_head will be None. So that's why! <b>Remember, the previous code uses <code>(index - 1)</code> when looping.</b>
+            </p>
+            <div className="two-panel">
+                <div>
+                    <pre>
+                        <code className="language-python">{
+`
+next_to_temp = temp_head.nextmap.nextmap
+temp_head.nextmap = next_to_temp
+next_node = None  #Clean up the removed node
+
+`
+                        }</code>
+                    </pre>
+                </div>
+                <div>
+                    <p>
+                        Now, we just need to swap the values.
+                    </p>
+                </div>
+            </div>
             <p>
                 <div id="side-button">
                     <button><a href="#lesson-content">Go up</a></button>
