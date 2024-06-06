@@ -77,7 +77,7 @@ function App() {
 
     return(
       <header>
-        <h1>Title</h1>
+        <h1>Contempute</h1>
         <input id='search-bar' type="text" placeholder='Search'/>
         <button id='settings-button' onClick={togglePage}> <div><img src={settingsIcon} alt="settings" /></div>  </button>
         <button id='profile-button' onClick={()=>{toggleProfileVisibility()}}> <div><img src={profileIcon} alt="profile" /></div> 
