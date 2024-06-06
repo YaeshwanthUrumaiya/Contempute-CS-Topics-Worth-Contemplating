@@ -119,8 +119,6 @@ print(LL)
             </ul>
             <p>
                 The Implementions of them will be in the Advanced DS Subject!
-            </p>
-            <p>
                 <div id="side-button">
                     <button><a href="#lesson-content">Go up</a></button>
                     <button onClick={()=>{toggleFinished(activeLesson);toggleFinish()}}>{finish?"Unfinish":"Finish"}</button>
