@@ -108,7 +108,7 @@ export default function SettingsDisplayer({studyList,toggleFinished}) {
                     </div>
                     <div>
                         <h2>Yaeshwanth Urumaiya</h2>
-                        <p>Back end developer.</p>
+                        <p>Back end developer, content provider.</p>
                     </div>
                 </div>
             </div>

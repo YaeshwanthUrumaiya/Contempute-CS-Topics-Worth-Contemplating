@@ -398,6 +398,40 @@ next_node = None  #Clean up the removed node
                     </p>
                 </div>
             </div>
+            <h2>5. <code>search(self, item)</code></h2>
+            <p>
+                The search checks if an item exist inside the linked list. It compares if the item you give is exactly the same as one of the item in the list.
+            </p>
+            <p>
+                If the item exists, it will return the current index the item is in. Otherwise, it will return -1.
+            </p>
+            <pre>
+                <code className="language-python">{
+`
+def search(self, item):
+    temp_head = self.head
+    i=0
+    
+    while temp_head is not None:
+        if item==temp_head.item:
+            return i 
+        i+=1
+        temp_head = temp_head.nextmap
+    return -1 
+
+`
+                }</code>
+            </pre>
+            <ul style={{paddingLeft:"20px"}}>
+                <li><code>temp_head</code> is used to store the current node that will be looped in <code>while</code> loop.</li>
+                <li><code>i</code> is index tracker, it tracks the current index of the list while <code>while</code> is looping.</li>
+            </ul>
+            <p>
+                The while loop checks if the while loop is not <code>None</code>, which means it will check until the list <b>ends</b>. <code>i</code> (index) and <code>temp_head</code> is updated at the end of the loop, so conditional statements (<code>if else</code>) can work before the values are updated. 
+            </p>
+            <p>
+                The if statement checks if the exact item exists in the linked list. It will return the index (<code>i</code>) and exits the function. If the while loop ends without returning anything, the next line will return -1, because the item in the parameter does not exist in the linked list.
+            </p>
             <p>
                 <div id="side-button">
                     <button><a href="#lesson-content">Go up</a></button>
