@@ -29,7 +29,7 @@ export default function DSALinkedListImplementation({setOverviewMode,toggleFinis
                 <div id="r-side-button">
                     <button onClick={()=>{window.scrollTo(0,0);changeToLesson(activeLesson+1)}}>Continue</button>
                 </div>
-                 Linked List
+                 Let's Implement Linked List!
             </h1>
             <h2>1. Creating Node</h2>
             <p>
@@ -267,24 +267,23 @@ def remove(self, index = 0):
 
     temp_head = self.head
     
-    if index == 0: #If the index is 0, need to remove the first element
-        self.head = temp_head.nextmap #Take the header and assign it to the 2nd value. 
-        temp_head = None #Cleaning up the deleted node. 
+    if index == 0: 
+        self.head = temp_head.nextmap 
+        temp_head = None 
         return
 
-    for i in range(index - 1): #And if any value is given, we're going to loop to that index. 
-        if temp_head is None: #And if it turns None, means the given index exceeds the range of the list, We are breaking it to raise the error below. 
+    for i in range(index - 1): 
+        if temp_head is None: 
             break
         temp_head = temp_head.nextmap
         
 
-    if temp_head is None or temp_head.nextmap is None: #And we're raising the error here. This will come in clutch if the given index exceeds the our list's size. 
-        raise IndexError("Index out of range") #We're checking both temp_head and temp_head.nextmap. Why's that? (If the index is far more than list's size, the temp_head will be None. But if we're trying to remove the item at the index of (list's size)+1, the temp_head will have the last item but the nextmap of the temp_head will be None. So that's why!)
+    if temp_head is None or temp_head.nextmap is None: 
+        raise IndexError("Index out of range") 
     
-    #And now, we just need to swap the values.
     next_to_temp = temp_head.nextmap.nextmap
     temp_head.nextmap = next_to_temp
-    next_node = None  #Clean up the removed node
+    next_node = None  
 
 `
                 }</code>
@@ -367,7 +366,7 @@ for i in range(index - 1):
                 <code className="language-python">{
 `
 if temp_head is None or temp_head.nextmap is None:
-        raise IndexError("Index out of range") #We're checking both temp_head and temp_head.nextmap. Why's that? (If the index is far more than list's size, the temp_head will be None. But if we're trying to remove the item at the index of (list's size)+1, the temp_head will have the last item but the nextmap of the temp_head will be None. So that's why!)
+        raise IndexError("Index out of range") 
 
 `
                 }</code>
@@ -386,7 +385,7 @@ if temp_head is None or temp_head.nextmap is None:
 `
 next_to_temp = temp_head.nextmap.nextmap
 temp_head.nextmap = next_to_temp
-next_node = None  #Clean up the removed node
+next_node = None  
 
 `
                         }</code>
@@ -432,7 +431,98 @@ def search(self, item):
             <p>
                 The if statement checks if the exact item exists in the linked list. It will return the index (<code>i</code>) and exits the function. If the while loop ends without returning anything, the next line will return -1, because the item in the parameter does not exist in the linked list.
             </p>
-            <p>
+            <h2>Complete Code:</h2>
+            <pre>
+                <code className="language-python">{
+`
+class Node: 
+    def __init__(self, item):
+        self.item = item
+        self.nextmap = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None 
+
+    def insert(self, item, index=None):
+        if index is None: 
+            if self.head is None: 
+                self.head = Node(item)
+            else: 
+                current = self.head 
+                while current.nextmap: 
+                    current = current.nextmap
+                current.nextmap = Node(item) 
+        else: 
+            if index == 0:
+                new_node = Node(item)
+                new_node.nextmap = self.head 
+                self.head = new_node
+            else:
+                current = self.head
+                for i in range(index-1): 
+                    if current is None: 
+                        raise IndexError("Index out of range")
+                    current = current.nextmap 
+                new_node = Node(item) 
+                new_node.nextmap = current.nextmap
+                current.nextmap = new_node
+
+    def remove(self, index = 0):
+        if self.head == None: 
+            return
+
+        temp_head = self.head 
+        
+        if index == 0: 
+            self.head = temp_head.nextmap
+            temp_head = None 
+            return
+
+        for i in range(index - 1): 
+            if temp_head is None: 
+                break
+            temp_head = temp_head.nextmap
+           
+
+        if temp_head is None or temp_head.nextmap is None: 
+            raise IndexError("Index out of range") 
+        
+        next_to_temp = temp_head.nextmap.nextmap
+        temp_head.nextmap = next_to_temp
+        next_node = None  
+
+
+    def search(self, item):
+        
+        temp_head = self.head
+        i=0
+        
+        while temp_head is not None:
+            if item==temp_head.item: 
+                return i 
+            i+=1
+            temp_head = temp_head.nextmap
+        return -1 
+    
+    #The below three function are just helper functions which will makes our understanding easier. 
+    def __str__(self,return_list=False):
+        output = []
+        temp_head = self.head
+        while temp_head is not None:
+            output.append(temp_head.item)
+            temp_head = temp_head.nextmap
+        return str(output)[1:-1] if return_list == False else output
+
+    def __getitem__(self, index):
+        return self.__str__(True)[index]
+    
+    def __len__(self):
+        return len(self.__str__(True))
+
+
+`
+                }</code>
                 <div id="side-button">
                     <button><a href="#lesson-content">Go up</a></button>
                     <button onClick={()=>{toggleFinished(activeLesson);toggleFinish()}}>{finish?"Unfinish":"Finish"}</button>
@@ -440,6 +530,8 @@ def search(self, item):
                 <div id="r-side-button">
                     <button onClick={()=>{window.scrollTo(0,0);changeToLesson(activeLesson+1)}}>Continue</button>
                 </div>
+            </pre>
+            <p>
             </p>
             <br />
         </div>
