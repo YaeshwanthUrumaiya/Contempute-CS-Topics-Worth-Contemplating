@@ -10,6 +10,7 @@ import DSAUsingQueueClass from "./DSA-Using-Queue-Class";
 import DSALinkedList from "./DSA-Linked-List";
 import DSALinkedListImplementation from "./DSA-Linked-List-Implementation";
 import DSAUsingLinkedList from "./DSA-Using-Linked-List";
+import DSATree from "./DSA-Tree";
 import DSAFinish from "./DSA-Finish";
 
 export const theActiveLesson = createContext(null);
@@ -89,6 +90,13 @@ export default function DSA(){
             "description":"Let's try using the linked list class!",
             "finished":false,
             "component":<DSAUsingLinkedList setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Tree",
+            "subject":"Data Structure",
+            "description":"Imagine a tree branch, every intersection and ends of it are the nodes of the tree.",
+            "finished":false,
+            "component":<DSATree setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
         },
         {
             "name":"DSA Finish",
