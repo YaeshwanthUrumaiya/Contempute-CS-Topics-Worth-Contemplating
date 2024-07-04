@@ -12,6 +12,8 @@ import DSALinkedListImplementation from "./DSA-Linked-List-Implementation";
 import DSAUsingLinkedList from "./DSA-Using-Linked-List";
 import DSATree from "./DSA-Tree";
 import DSAFinish from "./DSA-Finish";
+import DSAGraph from "./DSA-Graph";
+import DSAGraphImplementation from "./DSA-Graph-Implementation";
 
 export const theActiveLesson = createContext(null);
 export const finishedLesson = createContext(null);
@@ -92,11 +94,18 @@ export default function DSA(){
             "component":<DSAUsingLinkedList setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
         },
         {
-            "name":"Tree",
+            "name":"Graph",
             "subject":"Data Structure",
-            "description":"Imagine a tree branch, every intersection and ends of it are the nodes of the tree.",
+            "description":"Graph is linked list, but each node have a lot of connections.",
             "finished":false,
-            "component":<DSATree setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+            "component":<DSAGraph setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Graph Implementation",
+            "subject":"Data Structure",
+            "description":"Graph is linked list, but each node have a lot of connections.",
+            "finished":false,
+            "component":<DSAGraphImplementation setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
         },
         {
             "name":"DSA Finish",
