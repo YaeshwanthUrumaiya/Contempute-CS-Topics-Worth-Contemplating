@@ -14,6 +14,7 @@ import DSATree from "./DSA-Tree";
 import DSAFinish from "./DSA-Finish";
 import DSAGraph from "./DSA-Graph";
 import DSAGraphImplementation from "./DSA-Graph-Implementation";
+import DSAUsingGraph from "./DSA-Using-Graph";
 
 export const theActiveLesson = createContext(null);
 export const finishedLesson = createContext(null);
@@ -106,6 +107,13 @@ export default function DSA(){
             "description":"Implementing Graph in Python",
             "finished":false,
             "component":<DSAGraphImplementation setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Using Graph",
+            "subject":"Data Structure",
+            "description":"Let's try using the graph class!",
+            "finished":false,
+            "component":<DSAUsingGraph setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
         },
         {
             "name":"DSA Finish",
