@@ -210,8 +210,143 @@ def displayGraph(self):
             </pre>
             <h2>7. Returning Adjacency <u>List</u></h2>
             <p>
-                <code>getAdjacencyList(self)</code> function takes the adjacency matrix and returns the <b>adjacency <i>list</i></b>.
+                <code>getAdjacencyList(self)</code> function takes the adjacency matrix and returns the <b>adjacency <i>list</i></b>. 
             </p>
+            <p>
+                The format of the adjacency list is different than adjacency matrix. Let us have 3 vertices, named "a", "b", and "c". "b, c" and "a, b" are connected. The adjacency list would look like this:
+            </p>
+            <ul style={{listStyle:"none"}}>
+                <li><code>a : [[b, 1]],</code> vertice a connects with vertice b with weight 1</li>
+                <li><code>b : [[a, 1],[c, 1]],</code> vertice b connects with vertice a and c, both has weight 1</li>
+                <li><code>c : [[b, 1]],</code> vertice c connects with vertice b with weight 1</li>
+            </ul>
+            <p>
+                Instead of relying on the index of the adjacency matrix array, we format it like a list. So the adjacency list have this format:
+            </p>
+            <pre>
+                <code>{
+`
+{
+    vertice1 : [[vertice2, edge_weight],...],
+    ... 
+}
+`
+                }</code>
+            </pre>
+            <h4>What to find?</h4>
+            <p>
+                In order to create the adjacency list, we loop through the adjacency matrix. Based on the format, each list have 3 important information to record.
+            </p>
+            <ul style={{padding: "20px"}}>
+                <li>The current vertice the loop is in.</li>
+                <li>The vertices it connects with.</li>
+                <li>The weight of the vertices it connects with.</li>
+            </ul>
+            <h4>How to find it?</h4>
+            <p>
+                The current vertice can be found by using the index of the current for-loop.
+            </p>
+            <p>
+                The vertices and the weight it connects with can be found by a nested for loop, looping through the current vertice's connection array. If we found a "1", we record the vertice and the weight.
+            </p>
+            <pre>
+                <code className="language-python">{
+`
+def displayAdjencyList(self):
+    AdjencyList = {}
+    for i in range(len(self.adj)):
+        keyV = self.vertices[i]
+        keyVList = []
+        for j in range(len(self.adj[i])):
+            if self.adj[i][j][0] == 1:
+                keyVList.append([self.vertices[j] , self.adj[i][j][1]])
+        AdjencyList[keyV] = keyVList
+    return AdjencyList
+`
+                }</code>
+            </pre>
+            <h2>8. Complete Implementation</h2>
+            <pre>
+                <code className="language-python">{
+`
+class GraphError(Exception):
+    pass
+
+class Graph:
+    def __init__(self, vertices):
+        self.adj = [[ [0, 0] for _ in range(len(vertices))] for _ in range(len(vertices))] 
+        self.vertices = vertices
+        
+    def AddEdge(self, startKey, endKey, weight = 1, direction = 'B'):  
+        if startKey in self.vertices and endKey in self.vertices: 
+            start = self.vertices.index(startKey) 
+            end = self.vertices.index(endKey)
+            if direction.upper() == "B":
+                self.adj[start][end] = [1, weight]
+                self.adj[end][start] = [1, weight]  
+                return
+            if direction.upper() == "S":
+                self.adj[start][end] = [1, weight]
+                return 
+            if direction.upper() == "E":
+                self.adj[end][start] = [1, weight]
+                return
+            raise GraphError(f"Invalid direction: {direction}") 
+        else:
+            raise GraphError(f"One or both of the keys {startKey}, {endKey} are not in the vertices.")
+        
+    def DelEdge(self, startKey, endKey): 
+        if startKey in self.vertices and endKey in self.vertices:
+            start = self.vertices.index(startKey)
+            end = self.vertices.index(endKey)
+            self.adj[start][end] = [0, 0]
+            self.adj[end][start] = [0, 0]
+        else:
+            raise GraphError(f"One or both of the keys {startKey}, {endKey} are not in the vertices.")
+    
+    def AddVertice(self, vertice): 
+        if vertice not in self.vertices:
+            self.vertices.append(vertice)
+            for i in range(len(self.adj)):
+                self.adj[i].append( [0, 0] )
+            self.adj.append([[0, 0] for _ in range(len(self.vertices))])
+        else:
+            raise GraphError(f"Given vertice: {vertice} is already in the graph.")
+    
+    def DelVertice(self, vertice): 
+        if vertice in self.vertices:
+            toRemove = self.vertices.index(vertice)
+            self.adj.pop(toRemove) 
+            self.vertices.remove(vertice)
+            for i in range(len(self.adj)):
+                self.adj[i].pop(toRemove) 
+        else:
+            raise GraphError(f"Given vertice: {vertice} is not in the graph.")
+                
+    def displayGraph(self):
+        for i in range(len(self.adj)):
+            print(str(self.vertices[i]) + " : "  + str(self.adj[i]))
+    
+    def displayAdjencyList(self):
+        AdjencyList = {}
+        for i in range(len(self.adj)):
+            keyV = self.vertices[i]
+            keyVList = []
+            for j in range(len(self.adj[i])):
+                if self.adj[i][j][0] == 1:
+                    keyVList.append([self.vertices[j] , self.adj[i][j][1]])
+            AdjencyList[keyV] = keyVList
+        return AdjencyList
+        
+    #The below two function are just helper functions which will makes our understanding easier.   
+    def displayKey(self):
+        print(self.vertices)
+    
+    def __len__(self):
+        return len(self.adj)
+`
+                }</code>
+            </pre>
             <p>
                 <div id="side-button">
                     <button><a href="#lesson-content">Go up</a></button>

@@ -103,7 +103,7 @@ export default function DSA(){
         {
             "name":"Graph Implementation",
             "subject":"Data Structure",
-            "description":"Graph is linked list, but each node have a lot of connections.",
+            "description":"Implementing Graph in Python",
             "finished":false,
             "component":<DSAGraphImplementation setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
         },
