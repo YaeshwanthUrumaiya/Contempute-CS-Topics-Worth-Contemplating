@@ -15,6 +15,9 @@ import DSAFinish from "./DSA-Finish";
 import DSAGraph from "./DSA-Graph";
 import DSAGraphImplementation from "./DSA-Graph-Implementation";
 import DSAUsingGraph from "./DSA-Using-Graph";
+import DSAHashmaps from "./DSA-Hashmaps";
+import DSAHashmapsImplementation from "./DSA-Hashmaps-Implementation";
+import DSAUsingHashmap from "./DSA-Using-Hashmap";
 
 export const theActiveLesson = createContext(null);
 export const finishedLesson = createContext(null);
@@ -114,6 +117,27 @@ export default function DSA(){
             "description":"Let's try using the graph class!",
             "finished":false,
             "component":<DSAUsingGraph setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Hashmap",
+            "subject":"Data Structure",
+            "description":"Implementing Hashmap in Python",
+            "finished":false,
+            "component":<DSAHashmaps setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Hashmap Implementation",
+            "subject":"Data Structure",
+            "description":"Hashmap is a set of data in the form of Key:Value pairs. It's a dictionary!",
+            "finished":false,
+            "component":<DSAHashmapsImplementation setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Using Hashmap",
+            "subject":"Data Structure",
+            "description":"Let's try using the hashmap class!",
+            "finished":false,
+            "component":<DSAUsingHashmap setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
         },
         {
             "name":"DSA Finish",
