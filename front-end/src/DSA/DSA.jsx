@@ -18,6 +18,10 @@ import DSAUsingGraph from "./DSA-Using-Graph";
 import DSAHashmaps from "./DSA-Hashmaps";
 import DSAHashmapsImplementation from "./DSA-Hashmaps-Implementation";
 import DSAUsingHashmap from "./DSA-Using-Hashmap";
+import DSAAlgorithmIntro from "./DSA-Algo-Intro";
+import DSALinearSearch from "./DSA-Linear-Search";
+import DSABinarySearch from "./DSA-Binary-Search";
+import DSAInsertionSort from "./DSA-Insertion-Sort";
 
 export const theActiveLesson = createContext(null);
 export const finishedLesson = createContext(null);
@@ -138,6 +142,34 @@ export default function DSA(){
             "description":"Let's try using the hashmap class!",
             "finished":false,
             "component":<DSAUsingHashmap setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Algorithm Introduction",
+            "subject":"Algorithm",
+            "description":"What is Algorithm? and why is it important?",
+            "finished":false,
+            "component":<DSAAlgorithmIntro setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Linear Search",
+            "subject":"Algorithm",
+            "description":"Searches the array one by one from top to bottom.",
+            "finished":false,
+            "component":<DSALinearSearch setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Binary Search",
+            "subject":"Algorithm",
+            "description":"Goes to the middle, checks if the number we look for is higher or lower, repeat until we found it.",
+            "finished":false,
+            "component":<DSABinarySearch setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Insertion Sort",
+            "subject":"Algorithm",
+            "description":"Insert the element on the correct, sorted, position.",
+            "finished":false,
+            "component":<DSAInsertionSort setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
         },
         {
             "name":"DSA Finish",
