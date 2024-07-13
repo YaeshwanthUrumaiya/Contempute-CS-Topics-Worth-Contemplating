@@ -22,6 +22,8 @@ import DSAAlgorithmIntro from "./DSA-Algo-Intro";
 import DSALinearSearch from "./DSA-Linear-Search";
 import DSABinarySearch from "./DSA-Binary-Search";
 import DSAInsertionSort from "./DSA-Insertion-Sort";
+import DSABubbleSort from "./DSA-Bubble-Sort";
+import DSAMergeSort from "./DSA-Merge-Sort";
 
 export const theActiveLesson = createContext(null);
 export const finishedLesson = createContext(null);
@@ -170,6 +172,20 @@ export default function DSA(){
             "description":"Insert the element on the correct, sorted, position.",
             "finished":false,
             "component":<DSAInsertionSort setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Bubble Sort",
+            "subject":"Algorithm",
+            "description":"Takes an element, compares and swap if needed, repeat.",
+            "finished":false,
+            "component":<DSABubbleSort setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Merge Sort",
+            "subject":"Algorithm",
+            "description":"Divide an array until it's only a bunch of elements, then join while sorting them together.",
+            "finished":false,
+            "component":<DSAMergeSort setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
         },
         {
             "name":"DSA Finish",
