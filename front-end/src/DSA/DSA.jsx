@@ -14,6 +14,16 @@ import DSATree from "./DSA-Tree";
 import DSAFinish from "./DSA-Finish";
 import DSAGraph from "./DSA-Graph";
 import DSAGraphImplementation from "./DSA-Graph-Implementation";
+import DSAUsingGraph from "./DSA-Using-Graph";
+import DSAHashmaps from "./DSA-Hashmaps";
+import DSAHashmapsImplementation from "./DSA-Hashmaps-Implementation";
+import DSAUsingHashmap from "./DSA-Using-Hashmap";
+import DSAAlgorithmIntro from "./DSA-Algo-Intro";
+import DSALinearSearch from "./DSA-Linear-Search";
+import DSABinarySearch from "./DSA-Binary-Search";
+import DSAInsertionSort from "./DSA-Insertion-Sort";
+import DSABubbleSort from "./DSA-Bubble-Sort";
+import DSAMergeSort from "./DSA-Merge-Sort";
 
 export const theActiveLesson = createContext(null);
 export const finishedLesson = createContext(null);
@@ -103,9 +113,79 @@ export default function DSA(){
         {
             "name":"Graph Implementation",
             "subject":"Data Structure",
-            "description":"Graph is linked list, but each node have a lot of connections.",
+            "description":"Implementing Graph in Python",
             "finished":false,
             "component":<DSAGraphImplementation setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Using Graph",
+            "subject":"Data Structure",
+            "description":"Let's try using the graph class!",
+            "finished":false,
+            "component":<DSAUsingGraph setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Hashmap",
+            "subject":"Data Structure",
+            "description":"Implementing Hashmap in Python",
+            "finished":false,
+            "component":<DSAHashmaps setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Hashmap Implementation",
+            "subject":"Data Structure",
+            "description":"Hashmap is a set of data in the form of Key:Value pairs. It's a dictionary!",
+            "finished":false,
+            "component":<DSAHashmapsImplementation setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Using Hashmap",
+            "subject":"Data Structure",
+            "description":"Let's try using the hashmap class!",
+            "finished":false,
+            "component":<DSAUsingHashmap setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Algorithm Introduction",
+            "subject":"Algorithm",
+            "description":"What is Algorithm? and why is it important?",
+            "finished":false,
+            "component":<DSAAlgorithmIntro setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Linear Search",
+            "subject":"Algorithm",
+            "description":"Searches the array one by one from top to bottom.",
+            "finished":false,
+            "component":<DSALinearSearch setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Binary Search",
+            "subject":"Algorithm",
+            "description":"Goes to the middle, checks if the number we look for is higher or lower, repeat until we found it.",
+            "finished":false,
+            "component":<DSABinarySearch setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Insertion Sort",
+            "subject":"Algorithm",
+            "description":"Insert the element on the correct, sorted, position.",
+            "finished":false,
+            "component":<DSAInsertionSort setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Bubble Sort",
+            "subject":"Algorithm",
+            "description":"Takes an element, compares and swap if needed, repeat.",
+            "finished":false,
+            "component":<DSABubbleSort setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
+        },
+        {
+            "name":"Merge Sort",
+            "subject":"Algorithm",
+            "description":"Divide an array until it's only a bunch of elements, then join while sorting them together.",
+            "finished":false,
+            "component":<DSAMergeSort setOverviewMode={setOverviewMode} toggleFinished={toggleFinished} changeToLesson={changeToLesson}/>
         },
         {
             "name":"DSA Finish",
